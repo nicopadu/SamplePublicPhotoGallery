@@ -1,0 +1,38 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Error</title>
+</head>
+<body>
+    <hgroup class="Title">
+        <h1 class="Error">
+            Error
+        </h1>
+        <h2 class="Error">
+            Sorry, an error occurred while processing your request.
+        </h2>
+
+        @{ if (Request.IsLocal)
+           {
+               if (@Model != null && Model.Exception != null)
+               {
+                   <h3>Exception: @Model.Exception.Message</h3>
+                   <h4>Stack Trace: @Model.Exception.StackTrace</h4>
+               }
+               else
+               {
+                   <h3>Excepptios was null</h3>
+               }
+            }
+        
+    
+    </hgroup>
+    
+</body>
+</html>

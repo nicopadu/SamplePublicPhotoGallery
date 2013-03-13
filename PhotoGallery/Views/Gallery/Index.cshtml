@@ -1,0 +1,35 @@
+﻿@using PhotoGallery.Models;
+@{
+    ViewBag.Title = "Public Photo Gallery";
+}
+
+@section controls {
+    <section id="controls">
+            <button type="button" onclick="javascript:document.location.reload();">Refresh Photos</button>
+    </section>
+}
+
+
+<div class="gallery-wrapper">
+    <ul id="myGallery" class="content-wrapper">
+        @foreach (GalleryImage image in Model)
+        {
+            <li>
+                <img data-frame="@image.TumbnailUrl" src="@image.ImageUrl" title="@Html.DisplayFor(modelItem => image.Title)" data-description="Author: @Html.DisplayFor(modelItem => image.Author)" /></li>   
+        }
+    </ul>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#myGallery').galleryView({
+            panel_width: 768,
+            panel_height: 576,
+            panel_scale: 'fit',
+            frame_width: 75,
+            frame_height: 75,
+            frame_opacity: 1.0,
+            enable_overlays: true
+        });
+    });
+</script>
